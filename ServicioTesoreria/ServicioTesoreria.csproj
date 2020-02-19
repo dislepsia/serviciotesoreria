@@ -357,6 +357,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\cuota_ides.rdlc" />
     <EmbeddedResource Include="Reports\cuota.rdlc" />
   </ItemGroup>
   <PropertyGroup>
