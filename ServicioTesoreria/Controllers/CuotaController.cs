@@ -135,23 +135,6 @@ namespace ServicioTesoreria.Controllers
             }
         }
 
-        public void GenerarIdCuota(EstadosCuotas value)
-        {
-            try
-            {
-                CuotaData.Insert(value);
-            }
-            catch (Exception ex)
-            {
-                var resp = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(string.Format("Exception = {0}", "test")),//ex.Message)),
-                    ReasonPhrase = "Error1"
-                };
-                throw new HttpResponseException(resp);
-            }
-        }
-
         public bool ModificarCuota(long Dni
                                         , string origen
                                         , string nroFacura
@@ -703,13 +686,6 @@ namespace ServicioTesoreria.Controllers
         public Cuota GetCuota(string NroFactura)
         {
             return CuotaData.LeerUno(NroFactura);
-        }
-
-
-        [HttpGet]
-        public EstadosCuotas GetEstadosCuota(int id)
-        {
-            return CuotaData.LeerUnoEstadosCuotas(id);
         }
 
         public Cuota ObtenerCuota(int id)

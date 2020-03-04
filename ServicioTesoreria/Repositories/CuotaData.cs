@@ -726,22 +726,6 @@ namespace ServicioTesoreria.Repositories
             }
         }
 
-        public static EstadosCuotas LeerUnoEstadosCuotas(long id)
-        {
-            var param = new DynamicParameters();
-            param.Add("@Id", dbType: DbType.Int64, value: id);
-            string query = QUERY.Replace(Constantes.WHERE, @"
-                WHERE
-                    C.cuota_id = @Id 
-            ");
-            using (var db = new SqlConnection(conexion))
-            {
-                EstadosCuotas cuota = db.Query<EstadosCuotas>(query, param).FirstOrDefault();
-                return cuota;
-            }
-        }
-        
-
         public static Cuota LeerUno(string id)
         {
             var param = new DynamicParameters();
@@ -919,36 +903,7 @@ namespace ServicioTesoreria.Repositories
 
             }
         }
-
-        public static long Insert(EstadosCuotas cuota)
-        {
-            var param = new DynamicParameters();
-            param.Add("@cuota_id", dbType: DbType.Int64, value: cuota.cuota_id);
-            param.Add("@estado", dbType: DbType.String, value: cuota.estado);
-            param.Add("@fecha", dbType: DbType.DateTime, value: (cuota.fecha < new DateTime(1900, 1, 1)) ? new DateTime(1900, 1, 1) : cuota.fecha);
-            param.Add("@id", dbType: DbType.Int64, direction: ParameterDirection.Output);
-
-            const string SQL_QUERY = @"
-                INSERT dbo.EstadosCuotas(
-                       cuota_id,
-                       estado,
-                       fecha
-                    )
-                VALUES(
-                    @cuota_id
-                   ,@estado
-                   ,@fecha
-                   );
-                SET @ID = SCOPE_IDENTITY();
-            ";
-            using (var db = new SqlConnection(conexion))
-            {
-                db.Execute(SQL_QUERY, param);
-                return (param.Get<long>("@id"));
-
-            }
-        }
-
+        
         public static void Update(Cuota cuota)
         {
             var param = new DynamicParameters();

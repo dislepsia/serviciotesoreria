@@ -241,7 +241,6 @@
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Cupon.cs" />
-    <Compile Include="Models\EstadosCuotas.cs" />
     <Compile Include="Models\MedioPagoTipo.cs" />
     <Compile Include="Models\MedioPagoEstado.cs" />
     <Compile Include="Models\MedioDePago.cs" />
@@ -279,6 +278,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img_logo.gif" />
+    <Content Include="Content\logo-ides.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
